@@ -93,4 +93,49 @@ chmod 644 "$CONFIG_FILE"
 
 echo "==> Archivo config.php actualizado correctamente."
 echo "==> Web Provisionamiento completado!"
-echo "==> Accede en: http://localhost:8080/"
+echo "==> Accede en: http://localhost:8080/" 
+
+```
+
+### 3.2 `provision-db.sh` – Servidor de base de datos
+
+```bash
+#!/usr/bin/env bash
+set -e
+export DEBIAN_FRONTEND=noninteractive
+
+echo "==> Provisionando el servidor de base de datos (MariaDB)"
+
+# 1️⃣ Instalar MariaDB
+apt-get update -y
+apt-get install -y mariadb-server
+
+# 2️⃣ Configurar MariaDB para escuchar en IP privada
+sed -i "s/^bind-address.*/bind-address = 192.168.56.11/" /etc/mysql/mariadb.conf.d/50-server.cnf
+systemctl restart mariadb
+
+# 3️⃣ Crear base de datos, usuario y tabla de ejemplo
+mysql -u root <<MYSQL_SCRIPT
+CREATE DATABASE IF NOT EXISTS iawdb CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE USER IF NOT EXISTS 'iawuser'@'192.168.56.%' IDENTIFIED BY 'iawpass';
+GRANT ALL PRIVILEGES ON iawdb.* TO 'iawuser'@'192.168.56.%';
+FLUSH PRIVILEGES;
+
+USE iawdb;
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    fecha_registro DATE DEFAULT CURRENT_DATE
+);
+
+INSERT INTO users (nombre, email) VALUES
+('Ana Torres', 'ana.torres@example.com'),
+('Luis Gómez', 'luis.gomez@example.com'),
+('Marta Ruiz', 'marta.ruiz@example.com');
+MYSQL_SCRIPT
+
+echo "==> Provisionamiento de la base de datos completado con datos iniciales"
+
+```
+
