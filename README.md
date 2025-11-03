@@ -1,7 +1,7 @@
 # Práctica: Pila LAMP en dos niveles
 
 ## Autor
-**Alejandro [Tu Apellido]**  
+**Alejandro Sánchez Araujo**  
 Fecha: 03/11/2025
 
 ---
@@ -138,4 +138,41 @@ MYSQL_SCRIPT
 echo "==> Provisionamiento de la base de datos completado con datos iniciales"
 
 ```
+
+### 4️⃣ Comprobación
+
+Una vez aprovisionado el entorno, puedes verificar el funcionamiento accediendo a las siguientes rutas desde tu navegador:
+
+-  [Abrir web principal](http://localhost:8080/)
+-  [Abrir carpeta `/src`](http://localhost:8080/src/)
+
+### 5️⃣ Capturas de pantalla
+
+A continuación se deben incluir evidencias visuales del correcto funcionamiento del entorno:
+
+- 🖥️ **Máquina web con Apache corriendo**  
+  Comando: `systemctl status apache2`
+  <img width="1191" height="362" alt="image" src="https://github.com/user-attachments/assets/3fd0cd2c-5194-40e9-8e46-2f0466d3fb8c" />
+
+
+- 🗄️ **Máquina DB con MariaDB corriendo**  
+  Comando: `systemctl status mariadb`
+  <img width="1088" height="348" alt="image" src="https://github.com/user-attachments/assets/a2d89758-e36a-48b2-ae19-ab669a86318e" />
+
+
+- 🌐 **Página `/src` mostrando conexión a la base de datos y datos cargados**  
+  Acceso: [http://localhost:8080/src/](http://localhost:8080/src/)
+<img width="995" height="492" alt="image" src="https://github.com/user-attachments/assets/1077e6b3-dcc9-422c-8e0f-ab32fd8ad6d0" />
+
+### 6️⃣ Screencast – Vídeo de demostración
+
+Se incluye un vídeo corto que muestra el funcionamiento completo del entorno LAMP en dos niveles:
+
+
+
+
+
+https://github.com/user-attachments/assets/84b7d9d9-4138-4a73-aa9e-e0823d00b262
+
+
 
