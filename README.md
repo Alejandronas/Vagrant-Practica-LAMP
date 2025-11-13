@@ -164,7 +164,7 @@ A continuación se deben incluir evidencias visuales del correcto funcionamiento
   Acceso: [http://localhost:8080/src/](http://localhost:8080/src/)
 <img width="995" height="492" alt="image" src="https://github.com/user-attachments/assets/1077e6b3-dcc9-422c-8e0f-ab32fd8ad6d0" />
 
-### 6️⃣ Screencast – Vídeo de demostración
+### 6️⃣ Screencasht – Vídeo de demostración
 
 Se incluye un vídeo corto que muestra el funcionamiento completo del entorno LAMP en dos niveles:
 
